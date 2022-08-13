@@ -19,7 +19,7 @@ public class AdvancedCameraFollow : MonoBehaviour
         z = cameraPosition.z;//z is camera z axis coordinate
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         x += (target.transform.position.x - x) * 0.01f* xfollowSpeed;//moves 1%*followSpeed closer towards our target(player) x axis
         z += (target.transform.position.z - z- zOffset) * 0.01f* zfollowSpeed;//moves 1%*followSpeed closer towards our target(player) z axis
