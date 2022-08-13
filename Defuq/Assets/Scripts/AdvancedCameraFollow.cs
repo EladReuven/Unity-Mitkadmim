@@ -5,24 +5,25 @@ using UnityEngine;
 public class AdvancedCameraFollow : MonoBehaviour
 {
     [SerializeField] GameObject target;
-    float x;
-    float z;
+    [SerializeField] float zfollowSpeed;
+    [SerializeField] float xfollowSpeed;
     [SerializeField] float zOffset;
     Vector3 cameraPosition;
+    float x;
+    float z;
 
     private void Start()
     {
         cameraPosition = Camera.main.transform.position;
-        x= cameraPosition.x;
-        z = cameraPosition.z;
-    
+        x= cameraPosition.x;//x is camera x axis coordinate
+        z = cameraPosition.z;//z is camera z axis coordinate
     }
-    // Update is called once per frame
+
     void FixedUpdate()
     {
-        x += (target.transform.position.x - x) * 0.05f;//moves 5 precents closer towards our target(player) x axis
-        z += (target.transform.position.z - z) * 0.05f;//moves 5 precents closer towards our target(player) z axis
-        cameraPosition = new Vector3(x, cameraPosition.y, z - zOffset);
+        x += (target.transform.position.x - x) * 0.01f* xfollowSpeed;//moves 1%*followSpeed closer towards our target(player) x axis
+        z += (target.transform.position.z - z- zOffset) * 0.01f* zfollowSpeed;//moves 1%*followSpeed closer towards our target(player) z axis
+        cameraPosition = new Vector3(x, cameraPosition.y, z);
         Camera.main.transform.position = cameraPosition*Time.timeScale;//incase we want to pause the game(default equals 1)
     }
 }

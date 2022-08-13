@@ -28,7 +28,7 @@ public class MovementController : MonoBehaviour
 
     void Movement(Vector3 dir)
     {
-        Vector3 newPos = transform.position + (dir * _speed * Time.deltaTime);
-        transform.position = newPos;
+        Vector3 newPos =  (dir * _speed * Time.deltaTime);
+        transform.position += newPos;
     }
 }
