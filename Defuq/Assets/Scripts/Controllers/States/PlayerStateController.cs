@@ -34,6 +34,7 @@ namespace Controllers.States
         {
             this.state = state;
             currentStae = state.ToString();
+            OnStateChange.Invoke(state);
         }
 
 
