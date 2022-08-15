@@ -9,10 +9,10 @@ namespace Controllers.States
         public float holdTime = 0;
         public override void Update()
         {
-            
+            controller.SetState(new IdleState("idle"));
         }
 
-        public AttackReleaseState(float holdTime)
+        public AttackReleaseState(string tag, float holdTime) : base(tag)
         {
             this.holdTime = holdTime;
         }

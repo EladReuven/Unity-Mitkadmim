@@ -9,9 +9,9 @@ public class Example_states : MonoBehaviour
     public void TestMovement(PlayerState state)
     {
         //Check if the event is of the type you want by casting
-        MoveState moveState = state as MoveState;
-        if (moveState == null) return;
+        if (state.tag != "move") return;
 
+            MoveState moveState = state as MoveState;
         //do what you want with the state
         Debug.Log($"Move to  { moveState.movement.x},{moveState.movement.y}");
     }
@@ -28,10 +28,10 @@ public class Example_states : MonoBehaviour
         //If the player attacked 3 time, we reset the combo
 
         //first, is the player holding the attack btn?
-        if(state as AttackHoldState == null)
+        if(state.tag != "holdAttack")
         {
             //is the player released the attack?
-            if (state as AttackReleaseState == null) return;
+            if (state.tag != "releaseAttack") return;
 
             //Player release the attack
             var _releaseState = state as AttackReleaseState;
