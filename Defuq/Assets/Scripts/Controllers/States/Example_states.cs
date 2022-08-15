@@ -8,13 +8,16 @@ public class Example_states : MonoBehaviour
     //Create a method to be called by the event
     public void TestMovement(PlayerState state)
     {
-        //Check if the event is of the type you want by casting
+        //Check if the event is of the type you want
         if (state.tag != "move") return;
 
-            MoveState moveState = state as MoveState;
+        //Cast
+        MoveState moveState = state as MoveState;
         //do what you want with the state
         Debug.Log($"Move to  { moveState.movement.x},{moveState.movement.y}");
     }
+
+
 
     //Another example 
     //Create a counter for combos
