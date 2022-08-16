@@ -19,8 +19,7 @@ namespace Controllers.States
             if ((Input.GetButtonUp(controller.INPUT_FIRE_1)))
             {
                 if (controller.state.tag != "holdAttack") return;
-                var tempState = controller.state as AttackHoldState;
-                controller.SetState(new AttackReleaseState("releaseAttack", tempState.holdTime));
+                controller.SetState(new AttackReleaseState("releaseAttack", holdTime));
                 return;
             }
         }
