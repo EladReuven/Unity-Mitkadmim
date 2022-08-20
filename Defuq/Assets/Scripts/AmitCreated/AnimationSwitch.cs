@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationSwitch : MonoBehaviour
+namespace amitScripts
 {
-    [SerializeField] Animator enemyAnimator;
-    [SerializeField] string KilledBoolExpersion;
-    [SerializeField] string AttackBoolExpersion;
-
-    public void AnimatorKilledTrue()
+    public class AnimationSwitch : MonoBehaviour
     {
-        enemyAnimator.SetBool(KilledBoolExpersion, true);
-    }
+        [SerializeField] Animator enemyAnimator;
+        [SerializeField] string KilledBoolExpersion;
+        [SerializeField] string AttackBoolExpersion;
 
-    public void AnimatorAttackTrue()
-    {
-        enemyAnimator.SetBool(AttackBoolExpersion, true);
-    }
+        public void AnimatorKilledTrue()
+        {
+            enemyAnimator.SetBool(KilledBoolExpersion, true);
+        }
 
-    public void AnimatorAttackFalse()
-    {
-        enemyAnimator.SetBool(AttackBoolExpersion, false);
+        public void AnimatorAttackTrue()
+        {
+            enemyAnimator.SetBool(AttackBoolExpersion, true);
+        }
+
+        public void AnimatorAttackFalse()
+        {
+            enemyAnimator.SetBool(AttackBoolExpersion, false);
+        }
     }
 }
+
 
 // Made by Amit
