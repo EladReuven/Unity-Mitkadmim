@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace amitScripts
+namespace Data.Scriptable
 {
     [CreateAssetMenu(fileName = "Enemy", menuName = "Create New Enemy SO", order = 1)]
     public class EnemyStatsSO : ScriptableObject

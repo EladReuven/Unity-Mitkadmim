@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace amitScripts
+namespace Animations.Enemies
 {
     public class AnimationSwitch : MonoBehaviour
     {

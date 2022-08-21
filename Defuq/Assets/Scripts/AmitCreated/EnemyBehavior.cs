@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Data.Scriptable;
+using System.Events;
+
 
 namespace amitScripts
 {
     public class EnemyBehavior : MonoBehaviour
     {
-        public UnityEvent enemyKilled;
-        public UnityEvent enemyAttack;
 
         public List<Transform> targetsAquired = new List<Transform>();
         public List<Transform> targetInAttRange = new List<Transform>();
 
         [SerializeField] EnemyStatsSO currentEnemySO;
+        [SerializeField] CreatureEvents enemyEvent;
 
         [SerializeField] LayerMask targetMask;
         [SerializeField] LayerMask ObstacleMask;
@@ -108,7 +110,7 @@ namespace amitScripts
             else if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                enemyKilled.Invoke();
+                enemyEvent.enemyKilled.Invoke();
                 Debug.Log("Enemy Killed");
             }
         }
