@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace daniel
+
+namespace Controllers.Items
+
 {
     public class Weapon : MonoBehaviour
     {

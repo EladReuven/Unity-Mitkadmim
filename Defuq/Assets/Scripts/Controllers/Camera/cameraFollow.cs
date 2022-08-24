@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace daniel
+
+namespace Controllers.CameraCtrl
 {
-    public class AdvancedCameraFollow : MonoBehaviour
+    public class cameraFollow : MonoBehaviour
     {
         [SerializeField] GameObject target;
         [SerializeField] float zfollowSpeed;
