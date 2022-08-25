@@ -46,7 +46,6 @@ namespace Controllers.Player
 
             //movement relative to direction camera is facing
             cameraRelativeMovement = (forwardRelativeVerticalInput + rightRelativeHorizontalInput).normalized;
-            Debug.Log(cameraRelativeMovement);
             animovementX = cameraRelativeMovement.x;
             animovementZ = cameraRelativeMovement.z;
 
@@ -70,7 +69,7 @@ namespace Controllers.Player
         {
             Vector3 targetSpeed = cameraRelativeMovement * data.runMaxSpeed;
             Vector3 speedDif = targetSpeed - rb.velocity;
-            Vector3 movement = speedDif * (targetSpeed == Vector3.zero ? data.runDeceleration : data.runAcceleration);
+            Vector3 movement = speedDif * (targetSpeed == Vector3.zero ? data.runDeceleration : data.runAcceleration); //insert here * blend vector
             if(cameraRelativeMovement == Vector3.zero && rb.velocity.magnitude <= 0.02f)
             {
                 rb.velocity = Vector3.zero;

@@ -15,6 +15,7 @@ namespace Controllers.Player
         float currentVelocity;
         int velocityXHash, velocityZHash;
         float x, z;
+        float xBlend, yBlend;
 
         Vector2 playerV2;
 
@@ -36,10 +37,10 @@ namespace Controllers.Player
             //direction of looking right
             x = Mathf.Cos((Vector2.SignedAngle(playerV2, VelocityV2) + 90) * Mathf.Deg2Rad) * currentVelocity;
 
-            Vector2 animationMovement = new Vector2(x, z).normalized;
+            Vector2 animationMovement = new Vector2(x, z) / data.runMaxSpeed;//direction
             animator.SetFloat(velocityXHash, animationMovement.x);
             animator.SetFloat(velocityZHash, animationMovement.y);
-            Debug.Log("z = " + z + " x = " + x);
+            //Debug.Log($"x: {x} z: {z}");
         }
     }
 }

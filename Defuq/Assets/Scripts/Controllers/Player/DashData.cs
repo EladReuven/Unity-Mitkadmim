@@ -20,8 +20,8 @@ namespace Controllers.Player
         public bool resetVelocityAfterDash;
         private void OnValidate()
         {
-            runAcceleration = Mathf.Clamp(runAcceleration,1,runMaxSpeed);
-            runDeceleration = Mathf.Clamp(runDeceleration,1,runMaxSpeed);
+            runAcceleration = Mathf.Clamp(runAcceleration,0.1f,runMaxSpeed);
+            runDeceleration = Mathf.Clamp(runDeceleration,0.1f,runMaxSpeed);
             dashCooldown = dashCooldown >= dashDuration ? dashCooldown : dashDuration + 0.1f;
         }
     }
