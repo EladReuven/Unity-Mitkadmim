@@ -37,9 +37,10 @@ namespace Controllers.Player
             //direction of looking right
             x = Mathf.Cos((Vector2.SignedAngle(playerV2, VelocityV2) + 90) * Mathf.Deg2Rad) * currentVelocity;
 
-            Vector2 animationMovement = new Vector2(x, z) / data.runMaxSpeed;//direction
+            Vector2 animationMovement = new Vector2(x, z) / data.runMaxSpeed; //direction
             animator.SetFloat(velocityXHash, animationMovement.x);
             animator.SetFloat(velocityZHash, animationMovement.y);
+            Debug.Log(animationMovement);
             //Debug.Log($"x: {x} z: {z}");
         }
     }
