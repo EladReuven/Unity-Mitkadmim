@@ -19,7 +19,9 @@ public class Example_states : MonoBehaviour
 
 
 
-    //Another example 
+    //Another example
+    //added animation for attack
+    [SerializeField] Animator playerAnimator;
     //Create a counter for combos
     int combos = 0;
     //create a method to be called by the event
@@ -46,9 +48,11 @@ public class Example_states : MonoBehaviour
                 combos = 0;
                 //get the hold time in seconds
                 Debug.Log($"CRITICAL attack for { holdTime * 2}");
+                playerAnimator.SetTrigger("PressedAttack");
                 return;
             }
             Debug.Log("attacked for " + holdTime);
+            playerAnimator.SetTrigger("PressedAttack");
             return;
         }
         //Player is holding the attack
