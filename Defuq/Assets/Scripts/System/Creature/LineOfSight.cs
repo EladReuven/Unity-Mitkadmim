@@ -20,7 +20,7 @@ namespace Systems.Creatures
 
         private void Start()
         {
-            StartCoroutine(findTargetsWithDelay(.5f));
+            StartCoroutine(findTargetsWithDelay(.1f));
         }
 
         void FindVisableTargets()

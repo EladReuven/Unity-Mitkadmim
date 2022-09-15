@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.AI;
 using Data.Creatures;
 using System.Events;
 using Systems.Creatures;
+
 
 namespace Controllers.Creatures
 {
@@ -14,6 +15,7 @@ namespace Controllers.Creatures
         [SerializeField] EnemyStatsSO data;
         [SerializeField] CreatureEvents enemyEvent;
         [SerializeField] LineOfSight LineOfSight;
+        [SerializeField] NavMeshAgent agent;
 
         private int currentHealth;
         private int currentDamage;
@@ -29,7 +31,19 @@ namespace Controllers.Creatures
 
         }
 
-  
+        private void Update()
+        {
+            if (LineOfSight.targetsAquired.Count > 0)
+            {
+                agent.SetDestination(LineOfSight.targetsAquired[0].transform.position);
+                agent.isStopped = false;
+                while (LineOfSight.targetInAttRange.Count > 0 && agent.isStopped == false)
+                {
+                    agent.isStopped = true;
+                }
+            }
+        }
+
 
         // Can be change if we decide the player manage all combat logic
         private void TakeDamage(int damageTaken)
