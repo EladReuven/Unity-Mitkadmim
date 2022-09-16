@@ -24,6 +24,11 @@ namespace Animations.Enemies
         {
             enemyAnimator.SetBool(AttackBoolExpersion, false);
         }
+
+        public bool GetAttackState()
+        {
+            return enemyAnimator.GetBool(AttackBoolExpersion);
+        }
     }
 }
 

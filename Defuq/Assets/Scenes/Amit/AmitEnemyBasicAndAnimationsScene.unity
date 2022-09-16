@@ -749,6 +749,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 303474257d4e3a242ae853573e55584a, type: 2}
   enemyEvent: {fileID: 1673525855}
   LineOfSight: {fileID: 1673525857}
+  enemySwitch: {fileID: 1673525853}
   agent: {fileID: 1673525858}
 --- !u!114 &1673525855
 MonoBehaviour:

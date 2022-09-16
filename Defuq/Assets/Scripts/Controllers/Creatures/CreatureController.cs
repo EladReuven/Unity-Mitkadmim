@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using Data.Creatures;
 using System.Events;
 using Systems.Creatures;
+using Animations.Enemies;
 
 
 namespace Controllers.Creatures
@@ -15,11 +16,14 @@ namespace Controllers.Creatures
         [SerializeField] EnemyStatsSO data;
         [SerializeField] CreatureEvents enemyEvent;
         [SerializeField] LineOfSight LineOfSight;
+        [SerializeField] AnimationSwitch enemySwitch;
         [SerializeField] NavMeshAgent agent;
+
+        private GameObject target;
 
         private int currentHealth;
         private int currentDamage;
-
+        
 
         private void Awake()
         {
@@ -35,11 +39,22 @@ namespace Controllers.Creatures
         {
             if (LineOfSight.targetsAquired.Count > 0)
             {
-                agent.SetDestination(LineOfSight.targetsAquired[0].transform.position);
+                int latestsInList = LineOfSight.targetsAquired.Count - 1;
+                target = LineOfSight.targetsAquired[latestsInList].gameObject;
+                // This will make the enemy chase the latest gameobject in his sight line of sight, (wont work if you are inside of his att range)
+            }
+            if (target != null)
+            {
+                agent.SetDestination(target.transform.position);
                 agent.isStopped = false;
+
                 while (LineOfSight.targetInAttRange.Count > 0 && agent.isStopped == false)
                 {
                     agent.isStopped = true;
+                    if (!enemySwitch.GetAttackState())
+                    {
+                        enemyEvent.enemyAttack.Invoke();
+                    }
                 }
             }
         }
