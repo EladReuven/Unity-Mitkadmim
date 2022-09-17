@@ -59,7 +59,6 @@ namespace Controllers.Creatures
             }
         }
 
-
         // Can be change if we decide the player manage all combat logic
         private void TakeDamage(int damageTaken)
         {
