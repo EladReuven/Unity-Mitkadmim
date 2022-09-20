@@ -48,6 +48,18 @@ namespace Controllers.Creatures
                 agent.SetDestination(target.transform.position);
                 agent.isStopped = false;
 
+                float veloX = Mathf.Abs(agent.velocity.x);
+                float veloZ = Mathf.Abs(agent.velocity.z);
+
+                if (veloX > veloZ)
+                {
+                    enemySwitch.SetSpeed(veloX);
+                }
+                if (veloX < veloZ)
+                {
+                    enemySwitch.SetSpeed(veloZ);
+                }
+
                 while (LineOfSight.targetInAttRange.Count > 0 && agent.isStopped == false)
                 {
                     agent.isStopped = true;

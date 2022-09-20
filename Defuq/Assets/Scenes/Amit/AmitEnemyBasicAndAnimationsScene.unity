@@ -1334,6 +1334,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1673525846}
   KilledBoolExpersion: IsKilled
   AttackBoolExpersion: IsAttacking
+  SpeedFloatExpersion: Speed
 --- !u!114 &1673525854
 MonoBehaviour:
   m_ObjectHideFlags: 0
