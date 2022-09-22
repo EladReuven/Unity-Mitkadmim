@@ -156,7 +156,7 @@ MonoBehaviour:
   OnStateChange:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2054041150}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Example_states, Assembly-CSharp
         m_MethodName: TestMovement
         m_Mode: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2054041150}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Example_states, Assembly-CSharp
         m_MethodName: TestAttack
         m_Mode: 0
@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1066349591}
-  zfollowSpeed: 5
-  xfollowSpeed: 5
+  zfollowSpeed: 7
+  xfollowSpeed: 7
   zOffset: 5
   xOffset: 0
 --- !u!1001 &1066349590
@@ -525,7 +525,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 57ff6ad96055a5645ad6492775a6a583, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57ff6ad96055a5645ad6492775a6a583, type: 3}
       propertyPath: m_LocalPosition.x
@@ -692,7 +692,7 @@ MonoBehaviour:
   OnStateChange:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2054041150}
+      - m_Target: {fileID: 1066349600}
         m_TargetAssemblyTypeName: Example_states, Assembly-CSharp
         m_MethodName: TestAttack
         m_Mode: 0
@@ -705,6 +705,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   currentStae: 
+--- !u!114 &1066349600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066349591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf5e52b15f3b1348b367420de6ff55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 1066349598}
 --- !u!1 &1673421187
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,49 +930,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2054041149
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2054041151}
-  - component: {fileID: 2054041150}
-  m_Layer: 0
-  m_Name: StatesExample
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2054041150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054041149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf5e52b15f3b1348b367420de6ff55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
---- !u!4 &2054041151
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054041149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
