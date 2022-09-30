@@ -1,54 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.AI;
 using Data.Creatures;
 using System.Events;
 using Systems.Creatures;
+using Animations.Enemies;
+
 
 namespace Controllers.Creatures
 {
     public class CreatureController : MonoBehaviour
     {
 
-        [SerializeField] EnemyStatsSO _data;
-        [SerializeField] LineOfSight _lineOfSight;
-        [SerializeField] CreatureEvents _enemyEvent;
+        [SerializeField] EnemyStatsSO data;
+        [SerializeField] CreatureEvents enemyEvent;
+        [SerializeField] LineOfSight LineOfSight;
+        [SerializeField] AnimationSwitch enemySwitch;
+        [SerializeField] NavMeshAgent agent;
 
-        private int _currentHealth;
-        private int _currentDamage;
+        private GameObject target;
 
+        private int currentHealth;
+        private int currentDamage;
+        
 
         private void Awake()
         {
-            _currentHealth = _data.maxHealth;
-            _currentDamage = _data.attackDamage;
-            if (_lineOfSight == null) return;
-            _lineOfSight.Init(_data.visionRange, _data.visionAngle, _data.attackRange);
+            currentHealth = data.maxHealth;
+            currentDamage = data.attackDamage;
+
+            if (LineOfSight == null) return;
+            LineOfSight.Init(data.visionRange, data.visionAngle, data.attackRange);
+
         }
 
-        public int GetCurrentHealth() 
+        private void Update()
         {
-            return _currentHealth;
-        }
-        public int GetCurrentDamage() 
-        {
-            return _currentDamage;
+            if (LineOfSight.targetsAquired.Count > 0)
+            {
+                int latestsInList = LineOfSight.targetsAquired.Count - 1;
+                target = LineOfSight.targetsAquired[latestsInList].gameObject;
+                // This will make the enemy chase the latest gameobject in his sight line of sight, (wont work if you are inside of his att range)
+            }
+            if (target != null)
+            {
+                agent.SetDestination(target.transform.position);
+                agent.isStopped = false;
+
+                float veloX = Mathf.Abs(agent.velocity.x);
+                float veloZ = Mathf.Abs(agent.velocity.z);
+
+                if (veloX > veloZ)
+                {
+                    enemySwitch.SetSpeed(veloX);
+                }
+                if (veloX < veloZ)
+                {
+                    enemySwitch.SetSpeed(veloZ);
+                }
+
+                while (LineOfSight.targetInAttRange.Count > 0 && agent.isStopped == false)
+                {
+                    agent.isStopped = true;
+                    if (!enemySwitch.GetAttackState())
+                    {
+                        enemyEvent.enemyAttack.Invoke();
+                    }
+                }
+            }
         }
 
-        public CreatureEvents GetEnemyEvent()
+        // Can be change if we decide the player manage all combat logic
+        private void TakeDamage(int damageTaken)
         {
-            return _enemyEvent;
+            if (currentHealth > 0)
+            {
+                currentHealth -= damageTaken;
+                // Debug
+                Debug.Log("Damage Taken");
+            }
+            else if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                enemyEvent.enemyKilled.Invoke();
+                Debug.Log("Enemy Killed");
+            }
         }
-        public void SetCurrentHealth(int newHealth)
-        {
-            _currentHealth=newHealth;
-        }
-        public void SetCurrentDamage(int newDamage)
-        {
-            _currentDamage=newDamage;
-        }
-
     }
 
 }

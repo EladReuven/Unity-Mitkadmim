@@ -9,6 +9,7 @@ namespace Animations.Enemies
         [SerializeField] Animator enemyAnimator;
         [SerializeField] string KilledBoolExpersion;
         [SerializeField] string AttackBoolExpersion;
+        [SerializeField] string SpeedFloatExpersion;
 
         public void AnimatorKilledTrue()
         {
@@ -23,6 +24,16 @@ namespace Animations.Enemies
         public void AnimatorAttackFalse()
         {
             enemyAnimator.SetBool(AttackBoolExpersion, false);
+        }
+
+        public bool GetAttackState()
+        {
+            return enemyAnimator.GetBool(AttackBoolExpersion);
+        }
+        
+        public void SetSpeed(float speed)
+        {
+            enemyAnimator.SetFloat(SpeedFloatExpersion, speed);
         }
     }
 }

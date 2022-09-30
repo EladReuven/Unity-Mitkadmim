@@ -18,11 +18,15 @@ namespace Systems.Creatures
         [SerializeField] LayerMask targetMask;
         [SerializeField] LayerMask ObstacleMask;
 
+        private void Start()
+        {
+            StartCoroutine(findTargetsWithDelay(.1f));
+        }
 
         void FindVisableTargets()
         {
             targetsAquired.Clear();
-            Collider[] targetInRadius = Physics.OverlapSphere(transform.position, SightRedius, targetMask);
+            Collider[] targetInRadius = Physics.OverlapSphere(gameObject.transform.position, SightRedius, targetMask);
 
             for (int i = 0; i < targetInRadius.Length; i++)
             {
@@ -45,6 +49,7 @@ namespace Systems.Creatures
             this.viewAngle = visionAngle;
             this.attackRange = attackRange;
             this.SightRedius = visionRange;
+            Debug.Log("Angle, Attack,Sight " + viewAngle + " , " + this.attackRange +  " , " + SightRedius);
         }
 
         void TargetsInAttackRange()
