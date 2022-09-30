@@ -52,8 +52,7 @@ public class Example_states : MonoBehaviour
             Debug.Log(timer);
             if (timer > timeBetweenComboHits)
             {
-                playerAnimator.SetTrigger("ComboEnded");
-                Debug.Log("Reset Combo to 0");
+                Debug.Log("normal Reset Combo to 0");
                 combos = 0;
             }
 
@@ -85,7 +84,7 @@ public class Example_states : MonoBehaviour
             }
             
             //check if charge attack
-            if (holdTime > chargeAttackTime)
+            if (holdTime >= chargeAttackTime)
             {
                 Debug.Log("CRIT for: " + holdTime * 2);
                 playerAnimator.SetTrigger("ChargeAttack");
@@ -110,8 +109,15 @@ public class Example_states : MonoBehaviour
         {
             timer += Time.deltaTime;
             yield return null;
-            Debug.Log(timer);
         }
+        Debug.Log("IEnum Reset Combo to 0");
+
+        //if (timer > timeBetweenComboHits)
+        //{
+        //    playerAnimator.SetTrigger("ComboEnded");
+        //    Debug.Log("Reset Combo to 0");
+        //    combos = 0;
+        //}
     }
 }
  
