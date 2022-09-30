@@ -11,42 +11,44 @@ namespace Controllers.Creatures
     public class CreatureController : MonoBehaviour
     {
 
-        [SerializeField] EnemyStatsSO data;
-        [SerializeField] CreatureEvents enemyEvent;
-        [SerializeField] LineOfSight LineOfSight;
+        [SerializeField] EnemyStatsSO _data;
+        [SerializeField] LineOfSight _lineOfSight;
+        [SerializeField] CreatureEvents _enemyEvent;
 
-        private int currentHealth;
-        private int currentDamage;
+        private int _currentHealth;
+        private int _currentDamage;
 
 
         private void Awake()
         {
-            currentHealth = data.maxHealth;
-            currentDamage = data.attackDamage;
-
-            if (LineOfSight == null) return;
-            LineOfSight.Init(data.visionRange, data.visionAngle, data.attackRange);
-
+            _currentHealth = _data.maxHealth;
+            _currentDamage = _data.attackDamage;
+            if (_lineOfSight == null) return;
+            _lineOfSight.Init(_data.visionRange, _data.visionAngle, _data.attackRange);
         }
 
-  
-
-        // Can be change if we decide the player manage all combat logic
-        private void TakeDamage(int damageTaken)
+        public int GetCurrentHealth() 
         {
-            if (currentHealth > 0)
-            {
-                currentHealth -= damageTaken;
-                // Debug
-                Debug.Log("Damage Taken");
-            }
-            else if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                enemyEvent.enemyKilled.Invoke();
-                Debug.Log("Enemy Killed");
-            }
+            return _currentHealth;
         }
+        public int GetCurrentDamage() 
+        {
+            return _currentDamage;
+        }
+
+        public CreatureEvents GetEnemyEvent()
+        {
+            return _enemyEvent;
+        }
+        public void SetCurrentHealth(int newHealth)
+        {
+            _currentHealth=newHealth;
+        }
+        public void SetCurrentDamage(int newDamage)
+        {
+            _currentDamage=newDamage;
+        }
+
     }
 
 }
