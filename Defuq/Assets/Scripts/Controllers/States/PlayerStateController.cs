@@ -29,7 +29,6 @@ namespace Controllers.States
             SetState(new IdleState("idle"));
         }
 
-
         private void Update()
         {
             state.Update();
