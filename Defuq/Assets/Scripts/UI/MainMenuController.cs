@@ -5,19 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+
+    public GameObject buttons;
     public void NewGameBtn()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void LoadGameBtn()
     {
-        //TODO
+        //TODO load game
     }
 
     public void OptionBtn()
     {
-        //TODO
+        buttons.SetActive(!buttons.activeInHierarchy);
+        OptionsMenuController.instance.ToggleMenu();
+
     }
 
     public void ExitBtn()
