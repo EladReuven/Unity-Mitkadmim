@@ -7,19 +7,18 @@ using Controllers.Creatures;
 
 public class AttackSphereHandler : MonoBehaviour
 {
-    [SerializeField] AnimationSwitch cretureAnimation;
+    [SerializeField] AnimationSwitch creatureAnimation;
     [SerializeField] CreatureController creatureController;
     [SerializeField] CreatureEvents _enemyEvent;
     [SerializeField] CombatSystem _combSystem;
     private string PLAYERTAG = "Player";
-    private string ENEMYTAG = "Enemy";
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(PLAYERTAG) && cretureAnimation.GetAttackState())
+        if (other.gameObject.CompareTag(PLAYERTAG) && creatureAnimation.GetAttackState())
         {
             _enemyEvent.enemyGotHit.Invoke();
-            _combSystem.TakeDamage(creatureController.GetCurrentDamage(), ENEMYTAG);
+            _combSystem.TakeDamage(creatureController.GetCurrentDamage(), PLAYERTAG);
         }
     }
     

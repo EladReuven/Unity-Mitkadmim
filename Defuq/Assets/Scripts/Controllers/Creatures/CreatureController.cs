@@ -72,7 +72,15 @@ namespace Controllers.Creatures
             }
         }
 
-       
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Weapon"))
+            {
+                _enemyEvent.enemyGotHit.Invoke();
+                _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy");
+            }
+        }
+
         public int GetCurrentHealth()
         {
             return _currentHealth;
