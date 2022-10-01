@@ -22,20 +22,20 @@ public class CombatSystem : MonoBehaviour
                 playerHealth = 0;
             }
             _playerData.SetCurrentHealth(playerHealth);
-            Debug.Log("Player's health: "+ _playerData.GetCurrentHealth());
+            Debug.Log("<color=red>Player's health: </color><color=green>" + _playerData.GetCurrentHealth() + "</color>");
         }
         
     }
-    public void TakeDamage(int takenDamage, string creatureType, CreatureController _enemyData)
+    public void TakeDamage(int takenDamage, GameObject Enemy, CreatureController _enemyData)
     {
-        if (creatureType.Equals("Enemy"))
-        {
             int enemyCurrentHealth = _enemyData.GetCurrentHealth();
             enemyCurrentHealth -= takenDamage;
-            if (enemyCurrentHealth < 0)
+            if (enemyCurrentHealth <= 0)
             {
                 enemyCurrentHealth = 0;
                 _enemyData.GetEnemySwitch().AnimatorKilledTrue();
+                Enemy.GetComponent<CreatureController>().enabled=false;
+                
                 _enemyData.GetEnemyEvent().enemyKilled.Invoke();
                 if (gameObject.layer == 7)
                 {
@@ -46,7 +46,6 @@ public class CombatSystem : MonoBehaviour
             }
             _enemyData.SetCurrentHealth(enemyCurrentHealth);
             Debug.Log("<color=red>Enemy's health: </color><color=green>" + _enemyData.GetCurrentHealth()+ "</color>");
-        }
     }
 
     

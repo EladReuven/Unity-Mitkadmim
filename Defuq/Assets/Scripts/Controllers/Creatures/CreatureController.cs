@@ -79,7 +79,7 @@ namespace Controllers.Creatures
             {
                 AudioManager.instance.SwordHit();
                 _enemyEvent.enemyGotHit.Invoke();
-                _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy", this);
+                _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), gameObject, this);
             }
         }
 
