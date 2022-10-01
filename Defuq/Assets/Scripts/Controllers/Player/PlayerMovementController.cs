@@ -35,6 +35,10 @@ namespace Controllers.Player
 
         private void Update()
         {
+            if(rb.velocity.magnitude > 0.1)
+            {
+                AudioManager.instance.PlayerWalkSFX();
+            }
             //get player input
             float horizontalInput = Input.GetAxisRaw(HORIZONTAL_AXIS);
             float verticalInput = Input.GetAxisRaw(VERTICAL_AXIS);

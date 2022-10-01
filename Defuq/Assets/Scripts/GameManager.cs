@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public Animator doorAnimator;
     public PlayerData playerData;
     public UnityEvent OnGameWon, OnGameOver;
 
+    public int enemiesAlive = 8;
+    bool _bossPhase = false;
     bool isGameRunnnig = true;
 
     private void Awake()
@@ -21,9 +24,20 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {
+        if(enemiesAlive <= 0 && !_bossPhase)
+        {
+            doorAnimator.SetBool("openDoor", true);
+            _bossPhase = true;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePuase();
@@ -58,5 +72,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(0);
 
+    }
+
+    [ContextMenu("kill Enemy")]
+    public void killEnemy()
+    {
+        enemiesAlive--;
     }
 }

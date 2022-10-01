@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class OptionsMenuController : MonoBehaviour
 {
     public static OptionsMenuController instance;
+    public AudioMixer mainAudioMixer;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class OptionsMenuController : MonoBehaviour
 
     public void VoluemSlider(float value)
     {
-        //TODO
+        mainAudioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
     }
 
     public void LoadBtn()

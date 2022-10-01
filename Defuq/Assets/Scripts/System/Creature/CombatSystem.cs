@@ -33,6 +33,11 @@ public class CombatSystem : MonoBehaviour
             {
                 enemyCurrentHealth = 0;
                 _enemyData.GetEnemyEvent().enemyKilled.Invoke();
+                if(gameObject.layer == 7)
+                {
+                    GameManager.instance.WinGame();
+                }
+                GameManager.instance.enemiesAlive--;
                 Debug.Log("Enemy Killed");
             }
             _enemyData.SetCurrentHealth(enemyCurrentHealth);

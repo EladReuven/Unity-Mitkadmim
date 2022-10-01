@@ -37,6 +37,8 @@ public class PlayerAttackController : MonoBehaviour
                 combos = 0;
             }
 
+            AudioManager.instance.PlayerSwingSFX();
+
             //coroutine to start a timer
             StartCoroutine(ComboTimer());
             isAttacking = false;
