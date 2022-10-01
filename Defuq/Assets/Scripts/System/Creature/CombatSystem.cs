@@ -14,8 +14,6 @@ public class CombatSystem : MonoBehaviour
     {
         if (creatureType.Equals("Player"))
         {
-            int playerArmor = _playerData.GetArmor();
-            takenDamage -= playerArmor;
             if (takenDamage < 0)
                 takenDamage = 0;
             int playerHealth = _playerData.GetCurrentHealth();
@@ -40,26 +38,7 @@ public class CombatSystem : MonoBehaviour
             _enemyData.SetCurrentHealth(enemyCurrentHealth);
             Debug.Log("Enemy's health: " + _enemyData.GetCurrentHealth());
         }
-
-
-
     }
-    public void AddAttackDamage(int addedAttackDamage)//can be minuse? doesnt mather for operator
-    {
-        /*
-        _attackDamage += addedAttackDamage;
-        */
-    }
-    public void RevivePlayer()
-    {
-        //_currentHealth = _maxHealth;
-        //setArmor
-    }
-    public void HealPlayer(int addedHealth)
-    {
-        // _currentHealth += addedHealth;
-        //if(_currentHealth>_maxHealth)
-        //_currentHealth=_maxHealth;
-    }
+    
 
 }

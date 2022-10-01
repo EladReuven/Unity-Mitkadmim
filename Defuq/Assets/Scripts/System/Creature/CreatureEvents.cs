@@ -9,6 +9,7 @@ namespace System.Events
     {
         public UnityEvent enemyKilled;
         public UnityEvent enemyAttack;
+        public UnityEvent enemyGotHit;
 
     }
 }

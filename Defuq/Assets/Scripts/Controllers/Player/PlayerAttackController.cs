@@ -5,6 +5,7 @@ using Controllers.States;
 
 public class PlayerAttackController : MonoBehaviour
 {
+    public static bool isAttacking = false;
     //added animation for attack
     [SerializeField] Animator playerAnimator;
     //Create a counter for combos
@@ -31,6 +32,7 @@ public class PlayerAttackController : MonoBehaviour
             Debug.Log(timer);
             if (timer > timeBetweenComboHits)
             {
+                isAttacking = false ;
                 Debug.Log("Reset Combo to 0");
                 combos = 0;
             }
@@ -86,6 +88,7 @@ public class PlayerAttackController : MonoBehaviour
         timer = 0;
         while (timer < timeBetweenComboHits)
         {
+            isAttacking=true;
             timer += Time.deltaTime;
             yield return null;
         }
