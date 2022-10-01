@@ -978,7 +978,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c84430e582fc6d4eba9ab062e526283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cretureAnimation: {fileID: 502467254}
+  creatureAnimation: {fileID: 0}
+  creatureController: {fileID: 0}
+  _enemyEvent: {fileID: 0}
+  _combSystem: {fileID: 0}
 --- !u!114 &502467254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1095,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  enemyGotHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &502467259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,6 +1115,7 @@ MonoBehaviour:
   _lineOfSight: {fileID: 502467257}
   _enemySwitch: {fileID: 502467254}
   _agent: {fileID: 502467256}
+  _combSystem: {fileID: 0}
 --- !u!64 &502467260
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2358,9 +2365,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3864ce8607f3c1343b34cc72de3849fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveFile:
+    savedPlayerVector3: {x: 0, y: 0, z: 0}
+    savedPlayerHealth: 0
+    savedEnemiesV3: []
+    savedEnemiesHealth: 
   current_PlayerTransform: {fileID: 2058416131}
   current_PlayerData: {fileID: 2058416132}
-  current_enemies: []
+  current_enemies:
+  - {fileID: 1673525844}
+  - {fileID: 1937158162}
+  - {fileID: 502467252}
 --- !u!4 &1651631026
 Transform:
   m_ObjectHideFlags: 0
@@ -2433,6 +2448,7 @@ MonoBehaviour:
   _lineOfSight: {fileID: 1673525857}
   _enemySwitch: {fileID: 1673525853}
   _agent: {fileID: 1673525858}
+  _combSystem: {fileID: 0}
 --- !u!114 &1673525855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2475,6 +2491,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  enemyGotHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1673525857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,7 +2558,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c84430e582fc6d4eba9ab062e526283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cretureAnimation: {fileID: 1673525853}
+  creatureAnimation: {fileID: 0}
+  creatureController: {fileID: 0}
+  _enemyEvent: {fileID: 0}
+  _combSystem: {fileID: 0}
 --- !u!135 &1883303888
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3408,7 +3430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c84430e582fc6d4eba9ab062e526283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cretureAnimation: {fileID: 1937158164}
+  creatureAnimation: {fileID: 0}
+  creatureController: {fileID: 0}
+  _enemyEvent: {fileID: 0}
+  _combSystem: {fileID: 0}
 --- !u!114 &1937158164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3522,6 +3547,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  enemyGotHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1937158169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3539,6 +3567,7 @@ MonoBehaviour:
   _lineOfSight: {fileID: 1937158167}
   _enemySwitch: {fileID: 1937158164}
   _agent: {fileID: 1937158166}
+  _combSystem: {fileID: 0}
 --- !u!64 &1937158170
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3575,10 +3604,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f507a21e18502543ab1daa28e842135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  maxHealth: 0
   _currentHealth: 99
   _attackDamage: 5
-  _armor: 10
+  OnHealthValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnArmorValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2058466486
 GameObject:
   m_ObjectHideFlags: 0
