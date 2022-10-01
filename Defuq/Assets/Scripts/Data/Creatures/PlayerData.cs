@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Data.Creatures
 { 
     public class PlayerData : MonoBehaviour
@@ -9,6 +10,7 @@ namespace Data.Creatures
         [SerializeField] private int _currentHealth;
         [SerializeField] private int _attackDamage;
         [SerializeField] private int _armor;       
+
         public int GetCurrentHealth() 
         {
             return _currentHealth;
@@ -33,12 +35,5 @@ namespace Data.Creatures
         {
             _armor = armor;
         }
-
-
-
-
-
-
-
     }
 }

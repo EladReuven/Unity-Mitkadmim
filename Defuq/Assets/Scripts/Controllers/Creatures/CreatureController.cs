@@ -37,6 +37,7 @@ namespace Controllers.Creatures
 
         private void Update()
         {
+            
             if (_lineOfSight.targetsAquired.Count > 0)
             {
                 int latestsInList = _lineOfSight.targetsAquired.Count - 1;
@@ -69,6 +70,11 @@ namespace Controllers.Creatures
                     }
                 }
             }
+        }
+
+        public int GetMaxHp()
+        {
+            return this._data.maxHealth;
         }
 
         public int GetCurrentHealth()
