@@ -14,8 +14,6 @@ public class CombatSystem : MonoBehaviour
     {
         if (creatureType.Equals("Player"))
         {
-            int playerArmor = _playerData.GetArmor();
-            takenDamage -= playerArmor;
             if (takenDamage < 0)
                 takenDamage = 0;
             int playerHealth = _playerData.GetCurrentHealth();

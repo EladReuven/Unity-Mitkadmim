@@ -1,3 +1,4 @@
+using Data.Creatures;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
+    public PlayerData playerData;
+
     bool isGameRunnnig = true;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -23,4 +36,5 @@ public class GameManager : MonoBehaviour
         //toggle the option menu
         OptionsMenuController.instance.ToggleMenu();
     }
+
 }
