@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace Data.Creatures
-{ 
+{
     public class PlayerData : MonoBehaviour
     {
-        [SerializeField] private int _maxHealth;
+        public int maxHealth;
+
         [SerializeField] private int _currentHealth;
         [SerializeField] private int _attackDamage;
-        [SerializeField] private int _armor;       
-        public int GetCurrentHealth() 
+
+        public UnityEvent<float> OnHealthValueChanged;
+        public UnityEvent<float> OnArmorValueChanged;
+        public int GetCurrentHealth()
         {
             return _currentHealth;
         }
         public int GetAttackDamage()
         {
             return _attackDamage;
-        }
-        public int GetArmor() 
-        {
-            return _armor;
         }
         public void SetAttackDamage(int attackDamage)
         {
@@ -28,13 +29,14 @@ namespace Data.Creatures
         public void SetCurrentHealth(int health)
         {
             _currentHealth = health;
+            OnHealthValueChanged.Invoke(health);
         }
-        public void SetArmor(int armor) 
+
+        [ContextMenu("Test Damage")]
+        public void _testDamage()
         {
-            _armor = armor;
+            SetCurrentHealth(GetCurrentHealth() - 5);
         }
-
-
 
 
 
