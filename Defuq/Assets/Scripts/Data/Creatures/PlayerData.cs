@@ -14,6 +14,7 @@ namespace Data.Creatures
 
         public UnityEvent<float> OnHealthValueChanged;
         public UnityEvent<float> OnArmorValueChanged;
+
         public int GetCurrentHealth()
         {
             return _currentHealth;
