@@ -13,79 +13,83 @@ namespace Controllers.Creatures
     public class CreatureController : MonoBehaviour
     {
 
-        [SerializeField] EnemyStatsSO data;
-        [SerializeField] CreatureEvents enemyEvent;
-        [SerializeField] LineOfSight LineOfSight;
-        [SerializeField] AnimationSwitch enemySwitch;
-        [SerializeField] NavMeshAgent agent;
+        [SerializeField] EnemyStatsSO _data;
+        [SerializeField] CreatureEvents _enemyEvent;
+        [SerializeField] LineOfSight _lineOfSight;
+        [SerializeField] AnimationSwitch _enemySwitch;
+        [SerializeField] NavMeshAgent _agent;
 
-        private GameObject target;
+        private GameObject _target;
 
-        private int currentHealth;
-        private int currentDamage;
+        private int _currentHealth;
+        private int _currentDamage;
         
 
         private void Awake()
         {
-            currentHealth = data.maxHealth;
-            currentDamage = data.attackDamage;
+            _currentHealth = _data.maxHealth;
+            _currentDamage = _data.attackDamage;
 
-            if (LineOfSight == null) return;
-            LineOfSight.Init(data.visionRange, data.visionAngle, data.attackRange);
+            if (_lineOfSight == null) return;
+            _lineOfSight.Init(_data.visionRange, _data.visionAngle, _data.attackRange);
 
         }
 
         private void Update()
         {
-            if (LineOfSight.targetsAquired.Count > 0)
+            if (_lineOfSight.targetsAquired.Count > 0)
             {
-                int latestsInList = LineOfSight.targetsAquired.Count - 1;
-                target = LineOfSight.targetsAquired[latestsInList].gameObject;
+                int latestsInList = _lineOfSight.targetsAquired.Count - 1;
+                _target = _lineOfSight.targetsAquired[latestsInList].gameObject;
                 // This will make the enemy chase the latest gameobject in his sight line of sight, (wont work if you are inside of his att range)
             }
-            if (target != null)
+            if (_target != null)
             {
-                agent.SetDestination(target.transform.position);
-                agent.isStopped = false;
+                _agent.SetDestination(_target.transform.position);
+                _agent.isStopped = false;
 
-                float veloX = Mathf.Abs(agent.velocity.x);
-                float veloZ = Mathf.Abs(agent.velocity.z);
+                float veloX = Mathf.Abs(_agent.velocity.x);
+                float veloZ = Mathf.Abs(_agent.velocity.z);
 
                 if (veloX > veloZ)
                 {
-                    enemySwitch.SetSpeed(veloX);
+                    _enemySwitch.SetSpeed(veloX);
                 }
                 if (veloX < veloZ)
                 {
-                    enemySwitch.SetSpeed(veloZ);
+                    _enemySwitch.SetSpeed(veloZ);
                 }
 
-                while (LineOfSight.targetInAttRange.Count > 0 && agent.isStopped == false)
+                while (_lineOfSight.targetInAttRange.Count > 0 && _agent.isStopped == false)
                 {
-                    agent.isStopped = true;
-                    if (!enemySwitch.GetAttackState())
+                    _agent.isStopped = true;
+                    if (!_enemySwitch.GetAttackState())
                     {
-                        enemyEvent.enemyAttack.Invoke();
+                        _enemyEvent.enemyAttack.Invoke();
                     }
                 }
             }
         }
 
-        // Can be change if we decide the player manage all combat logic
-        private void TakeDamage(int damageTaken)
+        public int GetCurrentHealth()
         {
-            if (currentHealth > 0)
-            {
-                currentHealth -= damageTaken;
-                // Debug
-                Debug.Log("Damage Taken");
-            }
-            else if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                enemyEvent.enemyKilled.Invoke();
-                Debug.Log("Enemy Killed");
-            }
+            return _currentHealth;
+        }
+        public int GetCurrentDamage()
+        {
+            return _currentDamage;
+        }
+        public CreatureEvents GetEnemyEvent() 
+        {
+            return _enemyEvent;
+        }
+        public void SetCurrentHealth(int newHealth)
+        {
+            _currentHealth = newHealth;
+        }
+        public void SetCurrentDamage(int newDamage)
+        {
+            _currentDamage = newDamage;
         }
     }
 
