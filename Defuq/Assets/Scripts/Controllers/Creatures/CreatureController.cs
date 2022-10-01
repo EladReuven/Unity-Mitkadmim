@@ -18,6 +18,7 @@ namespace Controllers.Creatures
         [SerializeField] LineOfSight _lineOfSight;
         [SerializeField] AnimationSwitch _enemySwitch;
         [SerializeField] NavMeshAgent _agent;
+        [SerializeField] CombatSystem _combSystem;
 
         private GameObject _target;
 
@@ -71,10 +72,20 @@ namespace Controllers.Creatures
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Weapon")&&PlayerAttackController.isAttacking)
+            {
+                _enemyEvent.enemyGotHit.Invoke();
+                _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy");
+            }
+        }
+
         public int GetCurrentHealth()
         {
             return _currentHealth;
         }
+       
         public int GetCurrentDamage()
         {
             return _currentDamage;

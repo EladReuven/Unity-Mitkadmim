@@ -38,26 +38,7 @@ public class CombatSystem : MonoBehaviour
             _enemyData.SetCurrentHealth(enemyCurrentHealth);
             Debug.Log("Enemy's health: " + _enemyData.GetCurrentHealth());
         }
-
-
-
     }
-    public void AddAttackDamage(int addedAttackDamage)//can be minuse? doesnt mather for operator
-    {
-        /*
-        _attackDamage += addedAttackDamage;
-        */
-    }
-    public void RevivePlayer()
-    {
-        //_currentHealth = _maxHealth;
-        //setArmor
-    }
-    public void HealPlayer(int addedHealth)
-    {
-        // _currentHealth += addedHealth;
-        //if(_currentHealth>_maxHealth)
-        //_currentHealth=_maxHealth;
-    }
+    
 
 }
