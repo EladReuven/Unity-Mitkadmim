@@ -6,6 +6,7 @@ using Controllers.States;
 public class PlayerAttackController : MonoBehaviour
 {
     public static bool isAttacking = false;
+    float isAttackingTimer = 0f;
     //added animation for attack
     [SerializeField] Animator playerAnimator;
     //Create a counter for combos
@@ -32,14 +33,13 @@ public class PlayerAttackController : MonoBehaviour
             Debug.Log(timer);
             if (timer > timeBetweenComboHits)
             {
-                isAttacking = false ;
                 Debug.Log("Reset Combo to 0");
                 combos = 0;
             }
 
             //coroutine to start a timer
             StartCoroutine(ComboTimer());
-
+            isAttacking = false;
             //Player release the attack
             var _releaseState = state as AttackReleaseState;
             var holdTime = _releaseState.holdTime % 60;
@@ -53,6 +53,7 @@ public class PlayerAttackController : MonoBehaviour
                 combos = 0;
                 //get the hold time in seconds
                 Debug.Log($"third attack");
+                StartCoroutine(IsAttackingCountdown(1.5f));
                 playerAnimator.SetTrigger("Attack3");
                 return;
             }
@@ -60,6 +61,7 @@ public class PlayerAttackController : MonoBehaviour
             {
                 Debug.Log("combo: " + combos);
                 Debug.Log("second attack");
+                StartCoroutine(IsAttackingCountdown(1f));
                 playerAnimator.SetTrigger("Attack2");
                 return;
             }
@@ -68,12 +70,14 @@ public class PlayerAttackController : MonoBehaviour
             if (holdTime >= chargeAttackTime)
             {
                 Debug.Log("CRIT for: " + holdTime * 2);
+                StartCoroutine(IsAttackingCountdown(2f));
                 playerAnimator.SetTrigger("ChargeAttack");
             }
             else
             {
                 Debug.Log("combo: " + combos);
                 Debug.Log("first attack");
+                StartCoroutine(IsAttackingCountdown(1.5f));
                 playerAnimator.SetTrigger("Attack1");
             }
             return;
@@ -83,12 +87,29 @@ public class PlayerAttackController : MonoBehaviour
     }
 
 
+    
+
+    private IEnumerator IsAttackingCountdown(float time)
+    {
+        isAttackingTimer += time;
+
+        if (!isAttacking) // to make sure even if the player pressed 10 times in a second, the countdown will only happen once, all that happens is more time gets added to the timer
+        {
+            while (isAttackingTimer > 0f)
+            {
+                isAttacking = true;
+                yield return null;
+                isAttackingTimer -= Time.deltaTime;
+            }
+            isAttacking = false;
+        }
+    }
     private IEnumerator ComboTimer()
     {
         timer = 0;
         while (timer < timeBetweenComboHits)
         {
-            isAttacking=true;
+            isAttacking = true;
             timer += Time.deltaTime;
             yield return null;
         }
