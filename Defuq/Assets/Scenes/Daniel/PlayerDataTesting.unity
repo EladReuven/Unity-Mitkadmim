@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f507a21e18502543ab1daa28e842135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  _currentHealth: 0
-  _attackDamage: 0
+  maxHealth: 50
+  _currentHealth: 50
+  _attackDamage: 10
   OnHealthValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1484,6 +1484,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cretureAnimation: {fileID: 1673525853}
+  creatureController: {fileID: 1673525854}
+  _enemyEvent: {fileID: 1673525855}
+  _combSystem: {fileID: 2034934002}
 --- !u!135 &1883303888
 SphereCollider:
   m_ObjectHideFlags: 0
