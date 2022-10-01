@@ -17,7 +17,6 @@ public class AttackSphereHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag(PLAYERTAG) && creatureAnimation.GetAttackState())
         {
-            _enemyEvent.enemyGotHit.Invoke();
             _combSystem.TakeDamage(creatureController.GetCurrentDamage(), PLAYERTAG);
         }
     }

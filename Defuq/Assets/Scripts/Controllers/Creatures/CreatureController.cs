@@ -74,7 +74,7 @@ namespace Controllers.Creatures
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Weapon"))
+            if (other.gameObject.CompareTag("Weapon")&&PlayerAttackController.isAttacking)
             {
                 _enemyEvent.enemyGotHit.Invoke();
                 _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy");
