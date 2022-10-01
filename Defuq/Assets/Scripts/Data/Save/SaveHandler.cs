@@ -12,7 +12,6 @@ public class SaveHandler : MonoBehaviour
     [SerializeField] Transform current_PlayerTransform;
     [SerializeField] PlayerData current_PlayerData;
     [SerializeField] List<GameObject> current_enemies;
-    [SerializeField] GameObject enemy_prefab;
 
     
     private string json;

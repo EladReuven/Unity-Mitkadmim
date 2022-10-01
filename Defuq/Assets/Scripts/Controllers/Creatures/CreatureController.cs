@@ -81,6 +81,11 @@ namespace Controllers.Creatures
             }
         }
 
+        public int GetMaxHp()
+        {
+            return this._data.maxHealth;
+        }
+
         public int GetCurrentHealth()
         {
             return _currentHealth;
