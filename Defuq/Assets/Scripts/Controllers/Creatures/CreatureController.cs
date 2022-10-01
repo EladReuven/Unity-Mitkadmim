@@ -18,6 +18,7 @@ namespace Controllers.Creatures
         [SerializeField] LineOfSight _lineOfSight;
         [SerializeField] AnimationSwitch _enemySwitch;
         [SerializeField] NavMeshAgent _agent;
+        [SerializeField] CombatSystem _combSystem;
 
         private GameObject _target;
 
@@ -71,10 +72,12 @@ namespace Controllers.Creatures
             }
         }
 
+       
         public int GetCurrentHealth()
         {
             return _currentHealth;
         }
+       
         public int GetCurrentDamage()
         {
             return _currentDamage;
