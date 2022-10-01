@@ -40,6 +40,7 @@ namespace Controllers.Creatures
         {
             if (_lineOfSight.targetsAquired.Count > 0)
             {
+                AudioManager.instance.ZombieTargetAquired();
                 int latestsInList = _lineOfSight.targetsAquired.Count - 1;
                 _target = _lineOfSight.targetsAquired[latestsInList].gameObject;
                 // This will make the enemy chase the latest gameobject in his sight line of sight, (wont work if you are inside of his att range)
@@ -76,6 +77,7 @@ namespace Controllers.Creatures
         {
             if (other.gameObject.CompareTag("Weapon")&& PlayerAttackController.isAttacking)
             {
+                AudioManager.instance.SwordHit();
                 _enemyEvent.enemyGotHit.Invoke();
                 _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy");
             }

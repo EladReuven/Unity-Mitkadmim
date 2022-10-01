@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     [Header("AmbientSFX")]
+    public AudioSource ambientAudioSource;
+    public AudioSource[] torches;
     public AudioClip ambientForest;
 
     [Header("PlayerSFX")]
@@ -83,5 +85,26 @@ public class AudioManager : MonoBehaviour
     {
         zombieAudioSource.clip = zombieDeath;
         zombieAudioSource.Play();
+    }
+
+    public void PauseEVERYTHING()
+    {
+        playerAudioSource.Stop();
+        zombieAudioSource.Stop();
+        swordAudioSource.Stop();
+        ambientAudioSource.Pause();
+        foreach(var torch in torches)
+        {
+            torch.Pause();
+        }
+    }
+
+    public void ResumeEverything()
+    {
+        ambientAudioSource.Play();
+        foreach( var torch in torches)
+        {
+            torch.Play();
+        }
     }
 }

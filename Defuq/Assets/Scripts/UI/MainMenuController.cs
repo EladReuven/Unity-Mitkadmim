@@ -9,7 +9,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject buttons;
     public void NewGameBtn()
     {
-        SceneManager.LoadScene("LevelDesign");
+        SceneManager.LoadScene("Level");
         SceneManager.LoadScene("options", LoadSceneMode.Additive);
         SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
     }
