@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OptionsMenuController : MonoBehaviour
 {
@@ -19,6 +20,26 @@ public class OptionsMenuController : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    public void VoluemSlider(float value)
+    {
+        //TODO
+    }
+
+    public void LoadBtn()
+    {
+        //TODO
+    }
+
+    public void SaveBtn()
+    {
+        //TODO
+    }
+
+    public void ExitBtn()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ToggleMenu()
