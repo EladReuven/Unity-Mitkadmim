@@ -7,7 +7,6 @@ using UnityEngine;
 public class CombatSystem : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
-    [SerializeField] private CreatureController _enemyData;
 
 
     public void TakeDamage(int takenDamage,string creatureType)
@@ -25,15 +24,20 @@ public class CombatSystem : MonoBehaviour
             _playerData.SetCurrentHealth(playerHealth);
             Debug.Log("Player's health: "+ _playerData.GetCurrentHealth());
         }
-        else if (creatureType.Equals("Enemy"))
+        
+    }
+    public void TakeDamage(int takenDamage, string creatureType, CreatureController _enemyData)
+    {
+        if (creatureType.Equals("Enemy"))
         {
-            int enemyCurrentHealth=_enemyData.GetCurrentHealth();
+            int enemyCurrentHealth = _enemyData.GetCurrentHealth();
             enemyCurrentHealth -= takenDamage;
             if (enemyCurrentHealth < 0)
             {
                 enemyCurrentHealth = 0;
+                _enemyData.GetEnemySwitch().AnimatorKilledTrue();
                 _enemyData.GetEnemyEvent().enemyKilled.Invoke();
-                if(gameObject.layer == 7)
+                if (gameObject.layer == 7)
                 {
                     GameManager.instance.WinGame();
                 }
@@ -41,9 +45,10 @@ public class CombatSystem : MonoBehaviour
                 Debug.Log("Enemy Killed");
             }
             _enemyData.SetCurrentHealth(enemyCurrentHealth);
-            Debug.Log("Enemy's health: " + _enemyData.GetCurrentHealth());
+            Debug.Log("<color=red>Enemy's health: </color><color=green>" + _enemyData.GetCurrentHealth()+ "</color>");
         }
     }
+
     
 
 }

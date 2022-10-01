@@ -79,7 +79,7 @@ namespace Controllers.Creatures
             {
                 AudioManager.instance.SwordHit();
                 _enemyEvent.enemyGotHit.Invoke();
-                _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy");
+                _combSystem.TakeDamage(GameManager.instance.playerData.GetAttackDamage(), "Enemy", this);
             }
         }
 
@@ -100,6 +100,14 @@ namespace Controllers.Creatures
         public CreatureEvents GetEnemyEvent() 
         {
             return _enemyEvent;
+        }
+        public AnimationSwitch GetEnemySwitch() 
+        {
+            return _enemySwitch;
+        }
+        public void SetEnemySwitch(AnimationSwitch enemySwitch)
+        {
+            _enemySwitch= enemySwitch;
         }
         public void SetCurrentHealth(int newHealth)
         {

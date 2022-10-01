@@ -521,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969848165251153976, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: m_Name
-      value: Zombie Variant 10.1
+      value: Zombie Variant 10.1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6231511125393465853, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -858,7 +858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c84430e582fc6d4eba9ab062e526283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cretureAnimation: {fileID: 1673525853}
+  creatureAnimation: {fileID: 0}
+  creatureController: {fileID: 0}
+  _enemyEvent: {fileID: 0}
+  _combSystem: {fileID: 0}
 --- !u!1 &5513330505091979792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5969848165251153976, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
@@ -891,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 2187167929563612578}
-  KilledBoolExpersion: IsKilled
+  KilledBoolExpersion: IsDead
   AttackBoolExpersion: IsAttacking
   SpeedFloatExpersion: Speed
 --- !u!114 &1673525854
@@ -911,6 +914,7 @@ MonoBehaviour:
   _lineOfSight: {fileID: 1673525857}
   _enemySwitch: {fileID: 1673525853}
   _agent: {fileID: 1673525858}
+  _combSystem: {fileID: 0}
 --- !u!114 &1673525855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,6 +957,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  enemyGotHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1673525857
 MonoBehaviour:
   m_ObjectHideFlags: 0
