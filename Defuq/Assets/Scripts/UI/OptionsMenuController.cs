@@ -6,23 +6,8 @@ using UnityEngine.Audio;
 
 public class OptionsMenuController : MonoBehaviour
 {
-    public static OptionsMenuController instance;
     public AudioMixer mainAudioMixer;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            ToggleMenu();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-    }
 
     public void VoluemSlider(float value)
     {
@@ -31,12 +16,14 @@ public class OptionsMenuController : MonoBehaviour
 
     public void LoadBtn()
     {
-        //TODO
+        //TODO // Added The Save Handler Script into game manager and trying 
+        GameManager.instance.saveHandler.LoadGame();
     }
 
     public void SaveBtn()
     {
         //TODO
+        GameManager.instance.saveHandler.SaveTrigger();
     }
 
     public void ExitBtn()

@@ -10,7 +10,6 @@ public class MainMenuController : MonoBehaviour
     public void NewGameBtn()
     {
         SceneManager.LoadScene("Level");
-        SceneManager.LoadScene("options", LoadSceneMode.Additive);
         SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
     }
 
@@ -22,7 +21,7 @@ public class MainMenuController : MonoBehaviour
     public void OptionBtn()
     {
         buttons.SetActive(!buttons.activeInHierarchy);
-        OptionsMenuController.instance.ToggleMenu();
+        GameManager.instance.optionsMenuController.ToggleMenu();
 
     }
 

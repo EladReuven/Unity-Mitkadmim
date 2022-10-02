@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour
 
     public Animator doorAnimator;
     public PlayerData playerData;
+    // Added By Amit For Save ? ? ?
+    public SaveHandler saveHandler;
+    // Check Me ?  ?  ?
     public UnityEvent OnGameWon, OnGameOver;
+    public OptionsMenuController optionsMenuController;
 
     public int enemiesAlive = 8;
     bool _bossPhase = false;
@@ -51,7 +55,7 @@ public class GameManager : MonoBehaviour
         isGameRunnnig = !isGameRunnnig;
 
         //toggle the option menu
-        OptionsMenuController.instance.ToggleMenu();
+        optionsMenuController.ToggleMenu();
     }
 
     [ContextMenu("Win")]

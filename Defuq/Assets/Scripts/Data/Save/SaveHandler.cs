@@ -13,21 +13,18 @@ public class SaveHandler : MonoBehaviour
     [SerializeField] PlayerData current_PlayerData;
     [SerializeField] List<GameObject> current_enemies;
 
-    
+
     private string json;
 
     private void Awake()
     {
         SaveManager.Initialize();
 
+        // Delete LoadGame in case you only want to load game when prompting with menu buttons!
         LoadGame();
     }
 
-    private void Start()
-    {
-        InvokeRepeating("SaveTrigger", 5, 20);
-    }
-    
+
     public void SaveTrigger()
     {
         saveFile.savedPlayerVector3 = current_PlayerTransform.position;
@@ -37,7 +34,7 @@ public class SaveHandler : MonoBehaviour
 
         saveFile.savedEnemiesHealth.Clear();
         saveFile.savedEnemiesV3.Clear();
-        
+
         for (int i = 0; i < current_enemies.Count; i++)
         {
             CreatureController controller = current_enemies[i].GetComponent<CreatureController>();
@@ -80,6 +77,6 @@ public class SaveHandler : MonoBehaviour
         {
             return controller.GetMaxHp();
         }
-        else { return controller.GetCurrentHealth();}
+        else { return controller.GetCurrentHealth(); }
     }
 }
