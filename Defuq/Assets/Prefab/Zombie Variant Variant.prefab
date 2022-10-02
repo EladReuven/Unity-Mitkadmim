@@ -853,10 +853,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c84430e582fc6d4eba9ab062e526283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureAnimation: {fileID: 0}
-  creatureController: {fileID: 0}
-  _enemyEvent: {fileID: 0}
-  _combSystem: {fileID: 0}
+  creatureAnimation: {fileID: 1673525853}
+  creatureController: {fileID: 1673525854}
+  _enemyEvent: {fileID: 1673525855}
+  _combSystem: {fileID: 5716822942400503483, guid: e930b4f8174389c46a1cc0e4c51dae63, type: 3}
 --- !u!95 &3919199802501377509 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 675356554, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}

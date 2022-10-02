@@ -24,7 +24,10 @@ namespace Controllers.Creatures
 
         private int _currentHealth;
         private int _currentDamage;
-        
+
+        private void Start()
+        {
+        }
 
         private void Awake()
         {
