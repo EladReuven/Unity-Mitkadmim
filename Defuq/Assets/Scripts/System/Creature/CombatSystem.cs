@@ -6,23 +6,22 @@ using UnityEngine;
 
 public class CombatSystem : MonoBehaviour
 {
-    [SerializeField] private PlayerData _playerData;
-
 
     public void TakeDamage(int takenDamage,string creatureType)
     {
+        
         if (creatureType.Equals("Player"))
         {
             if (takenDamage < 0)
                 takenDamage = 0;
-            int playerHealth = _playerData.GetCurrentHealth();
+            int playerHealth = GameManager.instance.playerData.GetCurrentHealth();
             playerHealth -= takenDamage;
             if (playerHealth < 0)
             { 
                 playerHealth = 0;
             }
-            _playerData.SetCurrentHealth(playerHealth);
-            Debug.Log("<color=red>Player's health: </color><color=green>" + _playerData.GetCurrentHealth() + "</color>");
+            GameManager.instance.playerData.SetCurrentHealth(playerHealth);
+            Debug.Log("<color=red>Player's health: </color><color=green>" + GameManager.instance.playerData.GetCurrentHealth() + "</color>");
         }
         
     }

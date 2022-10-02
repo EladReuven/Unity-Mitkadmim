@@ -33,7 +33,6 @@ public class PlayerAttackController : MonoBehaviour
             Debug.Log(timer);
             if (timer > timeBetweenComboHits)
             {
-                Debug.Log("Reset Combo to 0");
                 combos = 0;
             }
 
@@ -51,18 +50,14 @@ public class PlayerAttackController : MonoBehaviour
             //depending on combo, play matching animation
             if (combos == 3)
             {
-                Debug.Log("combo: " + combos);
                 combos = 0;
                 //get the hold time in seconds
-                Debug.Log($"third attack");
                 StartCoroutine(IsAttackingCountdown(1.5f));
                 playerAnimator.SetTrigger("Attack3");
                 return;
             }
             else if (combos == 2)
             {
-                Debug.Log("combo: " + combos);
-                Debug.Log("second attack");
                 StartCoroutine(IsAttackingCountdown(1f));
                 playerAnimator.SetTrigger("Attack2");
                 return;
@@ -71,21 +66,17 @@ public class PlayerAttackController : MonoBehaviour
             //check if charge attack
             if (holdTime >= chargeAttackTime)
             {
-                Debug.Log("CRIT for: " + holdTime * 2);
                 StartCoroutine(IsAttackingCountdown(2f));
                 playerAnimator.SetTrigger("ChargeAttack");
             }
             else
             {
-                Debug.Log("combo: " + combos);
-                Debug.Log("first attack");
                 StartCoroutine(IsAttackingCountdown(1.5f));
                 playerAnimator.SetTrigger("Attack1");
             }
             return;
         }
         //Player is holding the attack
-        Debug.Log("Holding");
     }
 
 

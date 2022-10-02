@@ -13,19 +13,12 @@ public class AttackSphereHandler : MonoBehaviour
     [SerializeField] CombatSystem _combSystem;
     private string PLAYERTAG = "Player";
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag(PLAYERTAG) && creatureAnimation.GetAttackState())
         {
             _combSystem.TakeDamage(creatureController.GetCurrentDamage(), PLAYERTAG);
         }
     }
-    
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == PLAYERTAG && cretureAnimation.GetAttackState() == true)
-    //    {
-    //        Debug.Log("Attack Hit!");
-    //    }
-    //}
+   
 }

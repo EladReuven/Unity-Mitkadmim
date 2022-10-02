@@ -15,6 +15,15 @@ namespace Data.Creatures
         public UnityEvent<float> OnHealthValueChanged;
         public UnityEvent<float> OnArmorValueChanged;
 
+        [ContextMenu ("isnull health")]
+        public void IsValid() 
+        {
+
+            Debug.Log(_currentHealth);
+
+        }
+
+
         public int GetCurrentHealth()
         {
             return _currentHealth;
