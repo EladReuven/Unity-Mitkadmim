@@ -16,14 +16,6 @@ public class SaveHandler : MonoBehaviour
 
     private string json;
 
-    private void Awake()
-    {
-        SaveManager.Initialize();
-
-        // Delete LoadGame in case you only want to load game when prompting with menu buttons!
-        LoadGame();
-    }
-
 
     public void SaveTrigger()
     {
