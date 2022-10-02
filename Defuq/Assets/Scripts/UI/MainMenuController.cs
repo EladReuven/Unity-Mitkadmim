@@ -15,7 +15,9 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGameBtn()
     {
-        //TODO load game
+        NewGameBtn();
+        GameManager.instance.saveHandler.SaveTrigger();
+
     }
 
     public void OptionBtn()
