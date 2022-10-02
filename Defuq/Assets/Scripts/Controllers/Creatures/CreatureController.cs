@@ -45,12 +45,15 @@ namespace Controllers.Creatures
         {
             if (_lineOfSight.targetsAquired.Count > 0)
             {
-                AudioManager.instance.ZombieTargetAquired();
+                if (_currentHealth > 0)
+                {
+                    AudioManager.instance.ZombieTargetAquired();
+                }
                 int latestsInList = _lineOfSight.targetsAquired.Count - 1;
                 _target = _lineOfSight.targetsAquired[latestsInList].gameObject;
                 // This will make the enemy chase the latest gameobject in his sight line of sight, (wont work if you are inside of his att range)
             }
-            if (_target != null)
+            if (_target != null && _currentHealth > 0)
             {
                 _agent.SetDestination(_target.transform.position);
                 _agent.isStopped = false;
