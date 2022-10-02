@@ -33,7 +33,6 @@ public class CombatSystem : MonoBehaviour
         {
             enemyCurrentHealth = 0;
             _enemyData.GetEnemySwitch().AnimatorKilledTrue();
-            Enemy.GetComponent<CreatureController>().enabled = false;
             Enemy.GetComponent<MeshCollider>().enabled = false;
             _enemyData.GetEnemyEvent().enemyKilled.Invoke();
             if (Enemy.tag.Equals("Boss"))
