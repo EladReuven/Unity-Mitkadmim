@@ -25,8 +25,10 @@ namespace Controllers.Creatures
         private int _currentHealth;
         private int _currentDamage;
 
-        private void Start()
+        [ContextMenu("EnemyDebug")]
+        void EnemyDebug()
         {
+            Debug.Log("Current Enemy Health is:" + _currentHealth);
         }
 
         private void Awake()
