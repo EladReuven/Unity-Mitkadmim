@@ -31,12 +31,14 @@ public class OptionsMenuController : MonoBehaviour
 
     public void LoadBtn()
     {
-        //TODO
+        //TODO // Added The Save Handler Script into game manager and trying 
+        GameManager.instance.saveHandler.LoadGame();
     }
 
     public void SaveBtn()
     {
         //TODO
+        GameManager.instance.saveHandler.SaveTrigger();
     }
 
     public void ExitBtn()

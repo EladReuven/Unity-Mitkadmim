@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     public Animator doorAnimator;
     public PlayerData playerData;
+    // Added By Amit For Save ? ? ?
+    public SaveHandler saveHandler;
+    // Check Me ?  ?  ?
     public UnityEvent OnGameWon, OnGameOver;
 
     public int enemiesAlive = 8;

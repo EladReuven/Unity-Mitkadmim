@@ -20,9 +20,11 @@ public class SaveHandler : MonoBehaviour
     {
         SaveManager.Initialize();
 
+        // Delete LoadGame in case you only want to load game when prompting with menu buttons!
         LoadGame();
     }
 
+    // Delete Start in case you only  want to save with buttons!
     private void Start()
     {
         InvokeRepeating("SaveTrigger", 5, 20);

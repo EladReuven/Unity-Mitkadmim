@@ -7663,6 +7663,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70702c04a0b7ae040be50f6c10745c0e, type: 3}
+--- !u!114 &1242794491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 585488322551912891, guid: e930b4f8174389c46a1cc0e4c51dae63, type: 3}
+  m_PrefabInstance: {fileID: 585488321205168569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3864ce8607f3c1343b34cc72de3849fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1249459504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 491494, guid: 77d16180dca01094993b44048efd2c95, type: 3}
@@ -24287,6 +24298,10 @@ PrefabInstance:
       propertyPath: playerData
       value: 
       objectReference: {fileID: 2136644035}
+    - target: {fileID: 585488322551912889, guid: e930b4f8174389c46a1cc0e4c51dae63, type: 3}
+      propertyPath: saveHandler
+      value: 
+      objectReference: {fileID: 1242794491}
     - target: {fileID: 585488322551912889, guid: e930b4f8174389c46a1cc0e4c51dae63, type: 3}
       propertyPath: doorAnimator
       value: 
