@@ -6,23 +6,8 @@ using UnityEngine.Audio;
 
 public class OptionsMenuController : MonoBehaviour
 {
-    public static OptionsMenuController instance;
     public AudioMixer mainAudioMixer;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            ToggleMenu();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-    }
 
     public void VoluemSlider(float value)
     {
